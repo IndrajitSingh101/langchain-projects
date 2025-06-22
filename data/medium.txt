@@ -1,0 +1,334 @@
+
+Search
+Write
+
+indrajit singh
+Towards Data Engineer
+Towards Data Engineer
+Explore the world of data engineering with in-depth articles, tutorials, and insights. From building scalable data pipelines to optimizing databases, cloud integrations, and big data processing, this publication serves as a knowledge hub for aspiring and seasoned data engineers.
+
+Follow publication
+
+Member-only story
+
+Setup Airflow in 2 minutes (Just 3 CLI commands away)
+Naveenkumar Murugan
+Naveenkumar Murugan
+
+Follow
+5 min read
+·
+Jul 17, 2024
+138
+
+
+
+
+
+
+The easiest way to setup airflow in your system
+
+
+Airflow setup in 2 minutes
+Airflow is unavoidable in the future data engineering stack or service. In the current world of data engineering, we used orchestrators like Autosys, Control-M, and Abinitio Control Center jobs to orchestrate ETL workflows. However, moving forward, Airflow is poised to dominate. It’s an open-source Python software designed for orchestrating not only ETL pipelines but also other types of pipelines.
+
+Personally, working with Airflow has been a game-changer. Its intuitive workflow management system and Pythonic approach make designing, scheduling, and monitoring data workflows incredibly straightforward. The ability to define workflows as code (Python scripts) and visualize them in the Airflow UI has significantly streamlined our pipeline development process. Moreover, its active community and extensive library of plugins have provided robust solutions for integrating with various data sources and services, making it a versatile tool for any data engineering project.
+
+Being Data Engineer in 2024, knowing Airflow is very important, rather than spending money on Amazon managed Apache Airflow, we can setup the airflow in your local machine and can learn more about it.
+
+In this article, I’ll guide you through setting up a local Airflow instance on your machine using Docker in just three simple steps. Let’s dive in and get your Airflow environment up and running. And, Only that.
+
+Prerequisite
+Don’t get overwhelmed by list of pre-requisites, all of them are simple you might have already have it in your system :).
+
+Docker must be installed on your system.
+If you don’t have docker installed on your system, go through this article in medium for Windows, for Mac follow this article.
+
+2. Verify whether the sufficient memory allocated to Docker by executing the following command, Recommend minimum memory is 4GB, and Ideal memory would be 8GB.
+
+Command
+
+docker run --rm "debian:bullseye-slim" bash -c 'numfmt --to iec $(echo $(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE))))'
+The entire command runs a temporary Debian container that calculates the total physical memory of the system (by multiplying the number of memory pages by the size of each page) and then converts this number to a human-readable IEC format (like KiB, MiB, GiB). The container is automatically removed after the command is executed.
+
+
+Verifying the Docker allocated Size
+Or
+
+the easiest way to configure the resource allocation in the docker Desktop console itself.
+
+
+Setting Docker Memory
+3. Verify Docker desktop is Running
+
+Either via CLI or see in the running Apps :), Just added this for completeness.
+
+docker info
+
+Verify whether Docker Desktop running
+Steps to Setup the Ariflow
+Step 1: Download the docker-compose file
+
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.3/docker-compose.yaml'
+
+Downloading Airflow docker-compose file
+Optional Section
+This downloaded docker-compose file contains definitions for multiple services. I highly recommend to skim through the docker compose file and see how is defined. Airflow composed of many components such as
+
+airflow-scheduler: Monitors all tasks and DAGs, triggering task instances once dependencies are met.
+
+airflow-webserver: Provides a user interface at http://localhost:8080 for monitoring and managing DAGs and task statuses.
+
+airflow-worker: Executes tasks assigned by the scheduler.
+
+airflow-triggerer: Runs an event loop for deferrable tasks, triggering them upon completion of external events.
+
+airflow-init: Handles Airflow environment initialization and setup.
+
+postgres: Stores Airflow metadata, including DAG definitions, task statuses, and configurations.
+
+redis: Acts as a message broker, facilitating communication between the scheduler and workers for efficient task execution.
+
+Step 2: Create the necessary directories for Airflow and Intialize Databases of Airflow
+
+Before starting Airflow for the first time, you need to prepare your environment, i.e. create the necessary files, directories and initialize the database.
+
+mkdir -p ./dags ./logs ./plugins ./config
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+In the container, certain directories are mounted, enabling synchronization between your computer and the container.
+
+./dags : This directory is where you place your DAG files, defining the workflows that Airflow will execute.
+
+./logs: Contains logs generated during task execution and scheduling, providing insights into workflow performance and errors.
+
+./config: Here, you can add custom log parsers or configure cluster policies by including `airflow_local_settings.py`.
+
+./plugins: This directory is for your custom plugins, extending Airflow’s capabilities with additional operators, hooks, and macros.
+
+Intialise database, this will intialise the backend postgres database and create database user called ‘airflow’ and password ‘airflow’.
+
+docker compose up airflow-init
+
+
+Initialising Database
+Step 3: Running Airflow
+
+docker compose up
+
+Running Airflow Docker
+Verification
+Go to browser and type in http://0.0.0.0:8080,
+
+user: ariflow
+
+password: airflow
+
+
+Next steps
+Awesome! Thanks for reading my article and supporting me by clapping the article !
+
+That’s it for this article, may be How to create the DAG’s for executing ETL workflows and Installing python packages in workers, Airflow plugins in upcoming article.
+
+Don’t forget to!
+
+
+And,
+
+
+And, support by buying me a coffee if you really like my work :).
+
+Reference
+https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
+
+Airflow
+Airflow Installation
+Data Engineering
+AWS
+Data
+138
+
+
+
+
+
+Towards Data Engineer
+Published in Towards Data Engineer
+52 followers
+·
+Last published May 10, 2025
+Explore the world of data engineering with in-depth articles, tutorials, and insights. From building scalable data pipelines to optimizing databases, cloud integrations, and big data processing, this publication serves as a knowledge hub for aspiring and seasoned data engineers.
+
+
+Follow
+Naveenkumar Murugan
+Written by Naveenkumar Murugan
+635 followers
+·
+745 following
+https://naveenkumarmurugan.github.io/
+
+
+Follow
+No responses yet
+indrajit singh
+indrajit singh
+﻿
+
+Cancel
+Respond
+More from Naveenkumar Murugan and Towards Data Engineer
+Build cloud Architecture Diagrams in 1 Minute (This Tool is Crazy Fast!)
+Towards Data Engineer
+In
+
+Towards Data Engineer
+
+by
+
+Naveenkumar Murugan
+
+Build cloud Architecture Diagrams in 1 Minute (This Tool is Crazy Fast!)
+Using ChatGPT and Diagrams python package
+
+Jan 22, 2024
+953
+8
+
+
+How to load data from AWS S3 to RDS Postgres Sql?
+Towards Data Engineer
+In
+
+Towards Data Engineer
+
+by
+
+Naveenkumar Murugan
+
+How to load data from AWS S3 to RDS Postgres Sql?
+Let us create end to end ETL pipeline using serverless AWS services (Lambda, Step functions, RDS Posgres)
+Jan 13, 2024
+241
+5
+
+
+Banking Industry Architecture Network — What it is?
+Towards Data Engineer
+In
+
+Towards Data Engineer
+
+by
+
+Naveenkumar Murugan
+
+Banking Industry Architecture Network — What it is?
+A framework for banking
+
+Feb 1
+13
+
+
+One of the Scenario-based SQL Interview Question I ask Every Candidate (Simple yet thought…
+Naveenkumar Murugan
+Naveenkumar Murugan
+
+One of the Scenario-based SQL Interview Question I ask Every Candidate (Simple yet thought…
+Data Engineer — Interview question.
+
+Jan 14
+9
+
+
+See all from Naveenkumar Murugan
+See all from Towards Data Engineer
+Recommended from Medium
+Automating Data Pipeline Recovery
+Data Engineer Things
+In
+
+Data Engineer Things
+
+by
+
+Shubham Gondane
+
+Automating Data Pipeline Recovery
+Lessons, Limits, and the Role of AI
+3d ago
+9
+
+
+Personal SQL Cheatsheet
+Shadem
+Shadem
+
+Personal SQL Cheatsheet
+Here are some personal notes I took during the SQL CodeCademy course.
+Jun 10
+1
+
+
+Mastering Production-Grade ETL Pipelines: A Comprehensive Guide to Robust Data Engineering with…
+Mayurkumar Surani
+Mayurkumar Surani
+
+Mastering Production-Grade ETL Pipelines: A Comprehensive Guide to Robust Data Engineering with…
+Powerful python ETL scripts You can use
+
+Jun 7
+1
+
+
+SQL for Data Engineering: 10 Advanced Tricks Every Engineer Should Know
+The Data Engineering Digest
+The Data Engineering Digest
+
+SQL for Data Engineering: 10 Advanced Tricks Every Engineer Should Know
+From ETL Magic to Performance Power — with Real-Life Analogies and Examples
+
+5d ago
+19
+3
+
+
+The Cybersecurity Chronicles: How I Built a Multi-Threaded Nmap Network Scanner using Python
+Piggy Bank by Prachi Doshi
+Piggy Bank by Prachi Doshi
+
+The Cybersecurity Chronicles: How I Built a Multi-Threaded Nmap Network Scanner using Python
+The Backstory: A Network Scanning Saga
+Mar 28
+
+
+Unlock True Automation: Build a Bulletproof dbt + Airflow + Snowflake Pipeline
+Vijay Gadhave
+Vijay Gadhave
+
+Unlock True Automation: Build a Bulletproof dbt + Airflow + Snowflake Pipeline
+Note: If you’re not a medium member, CLICK HERE
+
+Apr 23
+6
+
+
+See more recommendations
+Help
+
+Status
+
+About
+
+Careers
+
+Press
+
+Blog
+
+Privacy
+
+Rules
+
+Terms
+
+Text to speech
