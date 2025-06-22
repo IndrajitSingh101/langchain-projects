@@ -39,7 +39,7 @@ def main():
        combine_docs_chain=combine_docs_chain
    )
    result=retrieval_qa_chain.invoke({"input":query})
-   print(result.answer)
+   print(result['answer'])
 if __name__ == "__main__":
     main()
     
