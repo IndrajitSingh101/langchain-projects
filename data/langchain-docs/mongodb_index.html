@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9B66JQQH2F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9B66JQQH2F');
+    </script>
+    
+    <title>langchain-mongodb: 0.6.2 &#8212; 🦜🔗 LangChain MongoDB  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=3b5cce75"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'langchain_mongodb/api_docs';</script>
+    <link rel="canonical" href="https://langchain-mongodb.readthedocs.io/en/latest/langchain_mongodb/api_docs.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="agent_toolkit" href="agent_toolkit.html" />
+    <link rel="prev" title="LangChain MongoDB Python API Reference" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Jun 24, 2025"/>
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="langchain-mongodb" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/langchain_mongodb/api_docs.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/wordmark-api.svg" class="logo__image only-light" alt="🦜🔗 LangChain MongoDB  documentation - Home"/>
+    <img src="../_static/wordmark-api-dark.svg" class="logo__image only-dark pst-js-only" alt="🦜🔗 LangChain MongoDB  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Langchain Mongodb
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../langgraph_checkpoint_mongodb/api_docs.html">
+    Langgraph Checkpoint Mongodb
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../langgraph_store_mongodb/api_docs.html">
+    Langgraph Store Mongodb
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+    <style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="langchain-mongodb" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/langchain_mongodb/api_docs.html" /><meta name="readthedocs-http-status" content="200" /></head>
+<body>
+<a href="https://python.langchain.com/" class='text-link'>Docs</a>
+</body></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/langchain-ai/langchain-mongodb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/langchainai" title="X / Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X / Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Langchain Mongodb
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../langgraph_checkpoint_mongodb/api_docs.html">
+    Langgraph Checkpoint Mongodb
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../langgraph_store_mongodb/api_docs.html">
+    Langgraph Store Mongodb
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+    <style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="langchain-mongodb" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/langchain_mongodb/api_docs.html" /><meta name="readthedocs-http-status" content="200" /></head>
+<body>
+<a href="https://python.langchain.com/" class='text-link'>Docs</a>
+</body></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/langchain-ai/langchain-mongodb" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/langchainai" title="X / Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X / Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="agent_toolkit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">agent_toolkit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="cache.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cache</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chat_message_histories.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chat_message_histories</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="docstores.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">docstores</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphrag.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">graphrag</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">index</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="indexes.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">indexes</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">loaders</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pipelines</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrievers.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">retrievers</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectorstores.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vectorstores</span></code></a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">langchain-mongodb: 0.6.2</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-langchain_mongodb">
+<span id="langchain-mongodb-0-6-2"></span><span id="langchain-mongodb"></span><h1>langchain-mongodb: 0.6.2<a class="headerlink" href="#module-langchain_mongodb" title="Link to this heading">#</a></h1>
+<p>Integrate your operational database and vector search in a single, unified,
+fully managed platform with full vector database capabilities on MongoDB Atlas.</p>
+<p>Store your operational data, metadata, and vector embeddings in oue VectorStore,
+MongoDBAtlasVectorSearch.
+Insert into a Chain via a Vector, FullText, or Hybrid Retriever.</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="langchain-mongodb-agent-toolkit">
+<h2><a class="reference internal" href="agent_toolkit.html#langchain-mongodb-agent-toolkit"><span class="std std-ref">agent_toolkit</span></a><a class="headerlink" href="#langchain-mongodb-agent-toolkit" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="agent_toolkit/langchain_mongodb.agent_toolkit.database.MongoDBDatabase.html#langchain_mongodb.agent_toolkit.database.MongoDBDatabase" title="langchain_mongodb.agent_toolkit.database.MongoDBDatabase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">agent_toolkit.database.MongoDBDatabase</span></code></a>(...)</p></td>
+<td><p>Wrapper around a MongoDB database.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="agent_toolkit/langchain_mongodb.agent_toolkit.tool.BaseMongoDBDatabaseTool.html#langchain_mongodb.agent_toolkit.tool.BaseMongoDBDatabaseTool" title="langchain_mongodb.agent_toolkit.tool.BaseMongoDBDatabaseTool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">agent_toolkit.tool.BaseMongoDBDatabaseTool</span></code></a></p></td>
+<td><p>Base tool for interacting with a MongoDB database.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="agent_toolkit/langchain_mongodb.agent_toolkit.tool.InfoMongoDBDatabaseTool.html#langchain_mongodb.agent_toolkit.tool.InfoMongoDBDatabaseTool" title="langchain_mongodb.agent_toolkit.tool.InfoMongoDBDatabaseTool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">agent_toolkit.tool.InfoMongoDBDatabaseTool</span></code></a></p></td>
+<td><p>Tool for getting metadata about a MongoDB database.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="agent_toolkit/langchain_mongodb.agent_toolkit.tool.ListMongoDBDatabaseTool.html#langchain_mongodb.agent_toolkit.tool.ListMongoDBDatabaseTool" title="langchain_mongodb.agent_toolkit.tool.ListMongoDBDatabaseTool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">agent_toolkit.tool.ListMongoDBDatabaseTool</span></code></a></p></td>
+<td><p>Tool for getting collection names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="agent_toolkit/langchain_mongodb.agent_toolkit.tool.QueryMongoDBCheckerTool.html#langchain_mongodb.agent_toolkit.tool.QueryMongoDBCheckerTool" title="langchain_mongodb.agent_toolkit.tool.QueryMongoDBCheckerTool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">agent_toolkit.tool.QueryMongoDBCheckerTool</span></code></a></p></td>
+<td><p>Use an LLM to check if a query is correct.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="agent_toolkit/langchain_mongodb.agent_toolkit.tool.QueryMongoDBDatabaseTool.html#langchain_mongodb.agent_toolkit.tool.QueryMongoDBDatabaseTool" title="langchain_mongodb.agent_toolkit.tool.QueryMongoDBDatabaseTool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">agent_toolkit.tool.QueryMongoDBDatabaseTool</span></code></a></p></td>
+<td><p>Tool for querying a MongoDB database.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="agent_toolkit/langchain_mongodb.agent_toolkit.toolkit.MongoDBDatabaseToolkit.html#langchain_mongodb.agent_toolkit.toolkit.MongoDBDatabaseToolkit" title="langchain_mongodb.agent_toolkit.toolkit.MongoDBDatabaseToolkit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">agent_toolkit.toolkit.MongoDBDatabaseToolkit</span></code></a></p></td>
+<td><p>MongoDBDatabaseToolkit for interacting with MongoDB databases.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-cache">
+<h2><a class="reference internal" href="cache.html#langchain-mongodb-cache"><span class="std std-ref">cache</span></a><a class="headerlink" href="#langchain-mongodb-cache" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="cache/langchain_mongodb.cache.MongoDBAtlasSemanticCache.html#langchain_mongodb.cache.MongoDBAtlasSemanticCache" title="langchain_mongodb.cache.MongoDBAtlasSemanticCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cache.MongoDBAtlasSemanticCache</span></code></a>(...[, ...])</p></td>
+<td><p>MongoDB Atlas Semantic cache.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="cache/langchain_mongodb.cache.MongoDBCache.html#langchain_mongodb.cache.MongoDBCache" title="langchain_mongodb.cache.MongoDBCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cache.MongoDBCache</span></code></a>(connection_string[, ...])</p></td>
+<td><p>MongoDB Atlas cache</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-chat-message-histories">
+<h2><a class="reference internal" href="chat_message_histories.html#langchain-mongodb-chat-message-histories"><span class="std std-ref">chat_message_histories</span></a><a class="headerlink" href="#langchain-mongodb-chat-message-histories" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="chat_message_histories/langchain_mongodb.chat_message_histories.MongoDBChatMessageHistory.html#langchain_mongodb.chat_message_histories.MongoDBChatMessageHistory" title="langchain_mongodb.chat_message_histories.MongoDBChatMessageHistory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chat_message_histories.MongoDBChatMessageHistory</span></code></a>(...)</p></td>
+<td><p>Chat message history that stores history in MongoDB.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-docstores">
+<h2><a class="reference internal" href="docstores.html#langchain-mongodb-docstores"><span class="std std-ref">docstores</span></a><a class="headerlink" href="#langchain-mongodb-docstores" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="docstores/langchain_mongodb.docstores.MongoDBDocStore.html#langchain_mongodb.docstores.MongoDBDocStore" title="langchain_mongodb.docstores.MongoDBDocStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">docstores.MongoDBDocStore</span></code></a>(collection[, text_key])</p></td>
+<td><p>MongoDB Collection providing BaseStore interface.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-graphrag">
+<h2><a class="reference internal" href="graphrag.html#langchain-mongodb-graphrag"><span class="std std-ref">graphrag</span></a><a class="headerlink" href="#langchain-mongodb-graphrag" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="graphrag/langchain_mongodb.graphrag.graph.MongoDBGraphStore.html#langchain_mongodb.graphrag.graph.MongoDBGraphStore" title="langchain_mongodb.graphrag.graph.MongoDBGraphStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graphrag.graph.MongoDBGraphStore</span></code></a>(*[, ...])</p></td>
+<td><p>GraphRAG DataStore</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-index">
+<h2><a class="reference internal" href="index.html#langchain-mongodb-index"><span class="std std-ref">index</span></a><a class="headerlink" href="#langchain-mongodb-index" title="Link to this heading">#</a></h2>
+<p><strong>Functions</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="index/langchain_mongodb.index.create_fulltext_search_index.html#langchain_mongodb.index.create_fulltext_search_index" title="langchain_mongodb.index.create_fulltext_search_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index.create_fulltext_search_index</span></code></a>(...[, ...])</p></td>
+<td><p>Experimental Utility function to create an Atlas Search index</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="index/langchain_mongodb.index.create_vector_search_index.html#langchain_mongodb.index.create_vector_search_index" title="langchain_mongodb.index.create_vector_search_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index.create_vector_search_index</span></code></a>(collection, ...)</p></td>
+<td><p>Experimental Utility function to create a vector search index</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="index/langchain_mongodb.index.drop_vector_search_index.html#langchain_mongodb.index.drop_vector_search_index" title="langchain_mongodb.index.drop_vector_search_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index.drop_vector_search_index</span></code></a>(collection, ...)</p></td>
+<td><p>Drop a created vector search index</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="index/langchain_mongodb.index.update_vector_search_index.html#langchain_mongodb.index.update_vector_search_index" title="langchain_mongodb.index.update_vector_search_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index.update_vector_search_index</span></code></a>(collection, ...)</p></td>
+<td><p>Update a search index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-indexes">
+<h2><a class="reference internal" href="indexes.html#langchain-mongodb-indexes"><span class="std std-ref">indexes</span></a><a class="headerlink" href="#langchain-mongodb-indexes" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="indexes/langchain_mongodb.indexes.MongoDBRecordManager.html#langchain_mongodb.indexes.MongoDBRecordManager" title="langchain_mongodb.indexes.MongoDBRecordManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexes.MongoDBRecordManager</span></code></a>(collection)</p></td>
+<td><p>A MongoDB-based implementation of the record manager.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-loaders">
+<h2><a class="reference internal" href="loaders.html#langchain-mongodb-loaders"><span class="std std-ref">loaders</span></a><a class="headerlink" href="#langchain-mongodb-loaders" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="loaders/langchain_mongodb.loaders.MongoDBLoader.html#langchain_mongodb.loaders.MongoDBLoader" title="langchain_mongodb.loaders.MongoDBLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loaders.MongoDBLoader</span></code></a>(collection, *[, ...])</p></td>
+<td><p>Document Loaders are classes to load Documents.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-pipelines">
+<h2><a class="reference internal" href="pipelines.html#langchain-mongodb-pipelines"><span class="std std-ref">pipelines</span></a><a class="headerlink" href="#langchain-mongodb-pipelines" title="Link to this heading">#</a></h2>
+<p><strong>Functions</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pipelines/langchain_mongodb.pipelines.combine_pipelines.html#langchain_mongodb.pipelines.combine_pipelines" title="langchain_mongodb.pipelines.combine_pipelines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipelines.combine_pipelines</span></code></a>(pipeline, stage, ...)</p></td>
+<td><p>Combines two aggregations into a single result set in-place.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pipelines/langchain_mongodb.pipelines.final_hybrid_stage.html#langchain_mongodb.pipelines.final_hybrid_stage" title="langchain_mongodb.pipelines.final_hybrid_stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipelines.final_hybrid_stage</span></code></a>(scores_fields, ...)</p></td>
+<td><p>Sum weighted scores, sort, and apply limit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pipelines/langchain_mongodb.pipelines.reciprocal_rank_stage.html#langchain_mongodb.pipelines.reciprocal_rank_stage" title="langchain_mongodb.pipelines.reciprocal_rank_stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipelines.reciprocal_rank_stage</span></code></a>(score_field)</p></td>
+<td><p>Stage adds Reciprocal Rank Fusion weighting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pipelines/langchain_mongodb.pipelines.text_search_stage.html#langchain_mongodb.pipelines.text_search_stage" title="langchain_mongodb.pipelines.text_search_stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipelines.text_search_stage</span></code></a>(query, ...[, ...])</p></td>
+<td><p>Full-Text search using Lucene's standard (BM25) analyzer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pipelines/langchain_mongodb.pipelines.vector_search_stage.html#langchain_mongodb.pipelines.vector_search_stage" title="langchain_mongodb.pipelines.vector_search_stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipelines.vector_search_stage</span></code></a>(query_vector, ...)</p></td>
+<td><p>Vector Search Stage without Scores.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-retrievers">
+<h2><a class="reference internal" href="retrievers.html#langchain-mongodb-retrievers"><span class="std std-ref">retrievers</span></a><a class="headerlink" href="#langchain-mongodb-retrievers" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="retrievers/langchain_mongodb.retrievers.full_text_search.MongoDBAtlasFullTextSearchRetriever.html#langchain_mongodb.retrievers.full_text_search.MongoDBAtlasFullTextSearchRetriever" title="langchain_mongodb.retrievers.full_text_search.MongoDBAtlasFullTextSearchRetriever"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrievers.full_text_search.MongoDBAtlasFullTextSearchRetriever</span></code></a></p></td>
+<td><p>Retriever performs full-text searches using Lucene's standard (BM25) analyzer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="retrievers/langchain_mongodb.retrievers.graphrag.MongoDBGraphRAGRetriever.html#langchain_mongodb.retrievers.graphrag.MongoDBGraphRAGRetriever" title="langchain_mongodb.retrievers.graphrag.MongoDBGraphRAGRetriever"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrievers.graphrag.MongoDBGraphRAGRetriever</span></code></a></p></td>
+<td><p>RunnableSerializable API of MongoDB GraphRAG.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="retrievers/langchain_mongodb.retrievers.hybrid_search.MongoDBAtlasHybridSearchRetriever.html#langchain_mongodb.retrievers.hybrid_search.MongoDBAtlasHybridSearchRetriever" title="langchain_mongodb.retrievers.hybrid_search.MongoDBAtlasHybridSearchRetriever"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrievers.hybrid_search.MongoDBAtlasHybridSearchRetriever</span></code></a></p></td>
+<td><p>Hybrid Search Retriever combines vector and full-text searches weighting them the via Reciprocal Rank Fusion (RRF) algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="retrievers/langchain_mongodb.retrievers.parent_document.MongoDBAtlasParentDocumentRetriever.html#langchain_mongodb.retrievers.parent_document.MongoDBAtlasParentDocumentRetriever" title="langchain_mongodb.retrievers.parent_document.MongoDBAtlasParentDocumentRetriever"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrievers.parent_document.MongoDBAtlasParentDocumentRetriever</span></code></a></p></td>
+<td><p>MongoDB Atlas's ParentDocumentRetriever</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="retrievers/langchain_mongodb.retrievers.self_querying.MongoDBAtlasSelfQueryRetriever.html#langchain_mongodb.retrievers.self_querying.MongoDBAtlasSelfQueryRetriever" title="langchain_mongodb.retrievers.self_querying.MongoDBAtlasSelfQueryRetriever"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrievers.self_querying.MongoDBAtlasSelfQueryRetriever</span></code></a></p></td>
+<td><p>Retriever that uses an LLM to deduce filters for Vector Search algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="retrievers/langchain_mongodb.retrievers.self_querying.MongoDBStructuredQueryTranslator.html#langchain_mongodb.retrievers.self_querying.MongoDBStructuredQueryTranslator" title="langchain_mongodb.retrievers.self_querying.MongoDBStructuredQueryTranslator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrievers.self_querying.MongoDBStructuredQueryTranslator</span></code></a>()</p></td>
+<td><p>Translator between MongoDB Query API and LangChain's StructuredQuery.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-utils">
+<h2><a class="reference internal" href="utils.html#langchain-mongodb-utils"><span class="std std-ref">utils</span></a><a class="headerlink" href="#langchain-mongodb-utils" title="Link to this heading">#</a></h2>
+<p><strong>Functions</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/langchain_mongodb.utils.cosine_similarity.html#langchain_mongodb.utils.cosine_similarity" title="langchain_mongodb.utils.cosine_similarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.cosine_similarity</span></code></a>(X, Y)</p></td>
+<td><p>Row-wise cosine similarity between two equal-width matrices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils/langchain_mongodb.utils.make_serializable.html#langchain_mongodb.utils.make_serializable" title="langchain_mongodb.utils.make_serializable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.make_serializable</span></code></a>(obj)</p></td>
+<td><p>Recursively cast values in a dict to a form able to json.dump</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/langchain_mongodb.utils.maximal_marginal_relevance.html#langchain_mongodb.utils.maximal_marginal_relevance" title="langchain_mongodb.utils.maximal_marginal_relevance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.maximal_marginal_relevance</span></code></a>(...[, ...])</p></td>
+<td><p>Compute Maximal Marginal Relevance (MMR).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils/langchain_mongodb.utils.oid_to_str.html#langchain_mongodb.utils.oid_to_str" title="langchain_mongodb.utils.oid_to_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.oid_to_str</span></code></a>(oid)</p></td>
+<td><p>Convert MongoDB's internal BSON ObjectId into a simple str for compatibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/langchain_mongodb.utils.str_to_oid.html#langchain_mongodb.utils.str_to_oid" title="langchain_mongodb.utils.str_to_oid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.str_to_oid</span></code></a>(str_repr)</p></td>
+<td><p>Attempt to cast string representation of id to MongoDB's internal BSON ObjectId.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="langchain-mongodb-vectorstores">
+<h2><a class="reference internal" href="vectorstores.html#langchain-mongodb-vectorstores"><span class="std std-ref">vectorstores</span></a><a class="headerlink" href="#langchain-mongodb-vectorstores" title="Link to this heading">#</a></h2>
+<p><strong>Classes</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="vectorstores/langchain_mongodb.vectorstores.MongoDBAtlasVectorSearch.html#langchain_mongodb.vectorstores.MongoDBAtlasVectorSearch" title="langchain_mongodb.vectorstores.MongoDBAtlasVectorSearch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vectorstores.MongoDBAtlasVectorSearch</span></code></a>(...[, ...])</p></td>
+<td><p>MongoDB Atlas vector store integration.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, LangChain Inc.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>
